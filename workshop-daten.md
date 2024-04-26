@@ -22,6 +22,8 @@ Nix-Grundkenntnisse sind sicherlich sehr hilfreich, aber nicht notwendig. Zur No
 ## Text
 Rust ist eine moderne, memory-safe Programmiersprache ohne Garbage Collector. Wie das umgesetzt ist, was für tolle Konzepte die Sprache zu bieten, wie man diese anwendet und was für weitere wunderbare Features die Sprache und ihr Ökosystem zu bieten haben, wollen wir hier interaktiv herausfinden.
 
+Vorkenntnisse sind nicht notwendig.
+
 ## Stichpunkte
 - Rust ist eine tolle Programmiersprache
 - Keinerlei Vorerfahrung notwendig

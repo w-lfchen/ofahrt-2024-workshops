@@ -10,7 +10,7 @@ section {
 h1 {
   color: #cdd6f4;
   font-size: 200%;
-  margin-bottom: -.3em;
+  margin-bottom: -.1em;
 }
 </style>
 

@@ -27,7 +27,7 @@ h1 {
 ---
 # Nix
 ## Was war das nochmal?
-- Nix als Programmiersprache
+- Nix als DSL
 - Package Manager Nix
 - Github-Repo nixpkgs
 - Linux-Distro NixOS
@@ -134,7 +134,7 @@ $\leadsto$ Reproduzierbar (da auf Commits festgelegt), aber nicht sonderlich erg
   - `nix flake check`: Teste verschiedene Dinge
 
 ---
-# Gute Grundlage für Flake
+# Flake-Grundlage für ein Projekt
 Achtung: Subjektivität!
 ```nix
 {
@@ -162,4 +162,4 @@ Achtung: Subjektivität!
 ```
 
 ---
-# Sample Text
+# Beispiele für Flakes und Workflows

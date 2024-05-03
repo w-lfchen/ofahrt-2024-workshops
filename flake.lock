@@ -18,7 +18,20 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "rose-pine-moon": "rose-pine-moon"
+      }
+    },
+    "rose-pine-moon": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-D70tB29dNs9nDPP+d/TpYEHnNHSzMSh7OgBZ2vepTro=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/rnd195/marp-community-themes/live/themes/rose-pine-moon.css"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/rnd195/marp-community-themes/live/themes/rose-pine-moon.css"
       }
     }
   },

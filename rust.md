@@ -33,6 +33,7 @@ h1 {
 - Einflüsse von vielen Sprachen und Konzepten
 - Insbesondere starke Einflüsse von funktionaler Programmierung
 - Zero-Cost Abstractions
+- Große Standardbibliothek
 - Gutes Tooling ($\to$ Cargo)
 - Großes Ökosystem durch [crates.io](https://crates.io)
 
@@ -161,15 +162,101 @@ let x = {
 
 ---
 # Kontrollfluss
+## `if`-Ausdruck
+```rust
+let number = 6;
+// statement-like usage
+if number % 4 == 0 {
+    println!("number is divisible by 4");
+} else if number % 3 == 0 {
+    println!("number is divisible by 3");
+} else {
+    println!("number is not divisible by 4 or 3");
+}
+// if is just an expression
+let y = if number == 4 { 3 } else { 23245 };
+```
+- Evaluiert abhängig von Konditionen zur ersten Alternative, die `true` ist
+
+---
+# Schleifen
+```rust
+loop {
+    // ...
+    break;
+}
+let condition = true;
+while condition {
+    // ...
+}
+let a = [10, 20, 30, 40, 50];
+for element in a {
+    println!("the value is: {element}");
+}
+// equivalent
+for element in (1..6).map(|n| n * 10) {
+    println!("{element}");
+}
+```
 
 ---
 # Ownership
+## Rusts Modell für Memory Management ohne Garbage Collector
+Es gibt 3 Regeln:
+1. Jeder Wert hat einen Owner
+2. Es kann zu jedem Zeitpunkt nur einen Owner geben
+3. Wenn der Owner out of Scope geht, wird der Wert gedropped
+
+- Wird vom Compiler erzwungen:
+  Programme, die diese Regeln verletzen, kompilieren nicht
+- Owner sind z.B. Variablen oder Funktionen, wenn sie Werte als Parameter erhalten
+
+---
+# Borrowing
+- Immer Werte übergeben skaliert logischerweise nicht $\to$ Referenzen
+- Referenzen sind wie Pointer, haben aber die Garantie, dass der Speicher valid ist
+```rust
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+// call site
+let s = String::from("hi");
+let length = calculate_length(&s);
+```
 
 ---
 # Pattern Matching
+```rust
+let x = match my_enum_value {
+    MyEnum::A => 5,
+    MyEnum::C(n) => n,
+    MyEnum::D(_, i, u) => i + u,
+    _ => {
+      println!("unknown enum variant!");
+      0
+    },
+};
+```
+- Vergleiche Wert mit einer List an Patterns
+- Alle Möglichkeiten müssen behandelt werden
+- Destructuring und Binden von Werten an Variablen möglich
+- Erstes Match bestimmt Konsequenzen
+- Wie `if` als Expression und Statement verwendbar
 
 ---
-# Standardbibliothek
+# Traits
+- Grundlegende Idee ähnlich zu Java Interfaces
+```rust
+pub trait MyTrait {
+    fn do_the_thing(&self) -> i32;
+}
+
+impl MyTrait for String {
+    fn do_the_thing(&self) -> i32 {
+      self.len() as i32
+    }
+}
+```
 
 ---
 # Ressourcen

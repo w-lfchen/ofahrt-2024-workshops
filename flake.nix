@@ -18,9 +18,35 @@
       pkgs = import nixpkgs { inherit system; };
     in
     {
-      packages.${system}.default = (
-        pkgs.writeShellScriptBin "marp-build" "${pkgs.marp-cli}/bin/marp --theme ${rose-pine-moon} $1"
-      );
+      packages.${system} =
+        let
+          files = [
+            "flakes"
+            "rust"
+          ];
+        in
+        nixpkgs.lib.genAttrs files (
+          name:
+          pkgs.stdenv.mkDerivation {
+            name = "ofahrt-2024-${name}-slides";
+            src = ./.;
+            buildInputs = with pkgs; [ marp-cli ];
+            buildPhase = ''
+              marp --theme ${rose-pine-moon} ${name}.md
+            '';
+            installPhase = ''
+              mkdir -p $out
+              cp ${name}.html $out
+            '';
+          }
+        )
+        // {
+          all = pkgs.symlinkJoin {
+            name = "ofahrt-2024-all-slides";
+            paths = builtins.map (name: self.packages.${system}.${name}) files;
+          };
+          default = self.packages.${system}.all;
+        };
 
       devShells.${system}.default = pkgs.mkShell { packages = with pkgs; [ marp-cli ]; };
 

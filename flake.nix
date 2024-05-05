@@ -8,13 +8,19 @@
   };
 
   outputs =
-    { self, nixpkgs, rose-pine-moon }:
+    {
+      self,
+      nixpkgs,
+      rose-pine-moon,
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in
     {
-      packages.${system}.default = (pkgs.writeShellScriptBin "marp-build" "${pkgs.marp-cli}/bin/marp --theme ${rose-pine-moon} $1");
+      packages.${system}.default = (
+        pkgs.writeShellScriptBin "marp-build" "${pkgs.marp-cli}/bin/marp --theme ${rose-pine-moon} $1"
+      );
 
       devShells.${system}.default = pkgs.mkShell { packages = with pkgs; [ marp-cli ]; };
 

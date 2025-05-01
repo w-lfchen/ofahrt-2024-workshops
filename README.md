@@ -1,6 +1,6 @@
 # Workshop slides
 
-These are the slides I used on my workshops for the [Ofahrt 2024](https://www.fachschaft.informatik.tu-darmstadt.de/en/newcomers/ofahrt/) of the computer science student representatives at TU Darmstadt.
+These are slides I use for my workshops at the [Ofahrt](https://www.fachschaft.informatik.tu-darmstadt.de/de/studium/anfaenger/owo) of the computer science student representatives at TU Darmstadt.
 
 `flakes` is about Nix Flakes, `rust` is about the very basics of Rust programming language.
 
